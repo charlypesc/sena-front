@@ -1,0 +1,26 @@
+<form [formGroup]="terminosForm">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="form-floating mt-2">
+                <input type="text" class="form-control" id="floatingInput" formControlName="Termino">
+                <label for="floatingInput">Termino</label>
+            </div>
+            <div class="form-floating mt-2">
+                <input type="text" class="form-control" id="floatingDescripcion" formControlName="Descripcion">
+                <label for="floatingDescripcion">Descripción</label>
+            </div>
+            <div class="form-floating mt-2">
+                <input type="text" class="form-control" id="floatingInput" formControlName="Link">
+                <label for="floatingInput">Link</label>
+            </div>
+            <!-- <div class="form-floating mt-2">
+                <input type="text" class="form-control" id="floatingInput" formControlName="NombreArchivo">
+                <label for="floatingInput">Nombre Archivo (Ingresar nombre de archivo de Carpeta videos)</label>
+            </div> -->
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-sm btn-outline-success me-1" (click)="guardarTermino()">Guardar</button>
+            <button class="btn btn-sm btn-outline-danger">Cerrar</button>
+        </div>
+    </div>
+</form>

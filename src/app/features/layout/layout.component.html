@@ -1,0 +1,26 @@
+<div class="container mt-2">
+    <h3 class="text-secondary">Señabulario</h3>
+    <nav ngbNav #nav="ngbNav" class="nav-tabs">
+        <ng-container ngbNavItem>
+            <button ngbNavLink>Busca el Termino</button>
+            <ng-template ngbNavContent>
+                <app-typehead></app-typehead>
+                <app-search></app-search>
+            </ng-template>
+        </ng-container>
+        <ng-container ngbNavItem>
+            <button ngbNavLink>Listado de terminos</button>
+            <ng-template ngbNavContent>
+                <app-terminos></app-terminos>
+            </ng-template>
+        </ng-container>
+        <!-- <ng-container ngbNavItem>
+            <button ngbNavLink>I'm a link</button>
+            <ng-template ngbNavContent>
+
+            </ng-template>
+        </ng-container> -->
+    </nav>
+
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

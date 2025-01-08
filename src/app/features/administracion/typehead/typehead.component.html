@@ -1,0 +1,12 @@
+<!-- <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
+
+<hr />
+<pre>Model: {{ model | json }}</pre> -->
+
+<input id="typeahead" type="text" class="form-control" [ngbTypeahead]="search" [resultTemplate]="rt" [(ngModel)]="model"
+    [inputFormatter]="formatter" [resultFormatter]="formatter" (selectItem)="onSelect($event.item)"
+    placeholder="Search for a framework" />
+
+<ng-template #rt let-r="result">
+    <span>{{ r.termino }}</span>
+</ng-template>

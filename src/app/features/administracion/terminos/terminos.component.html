@@ -1,0 +1,56 @@
+@if(termino$ | async; as termino){
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-outline-success ml-auto" (click)="edit(templatetutin, null)">Agregar</button>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-3">
+        <table datatable [dtOptions]="dtOptions" class="table light table-bordered">
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Termino</th>
+                    <th>Descripcion</th>
+                    <th>Link</th>
+                    <th>Fecha creación</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(item of termino; track item.Id){
+                <tr>
+                    <td>{{item.Id}}</td>
+                    <td>{{item.Termino}}</td>
+                    <td>{{item.Descripcion}}</td>
+                    <td>{{item.Link}}</td>
+                    <td>{{item.FechaCreacion | date : 'dd-MM-hhhh'}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-info me-1" (click)="edit(templatetutin, item)"><i
+                                class="bi bi-arrow-right"></i>
+                            editar</button>
+                        <button class="btn btn-sm btn-outline-danger" (click)="deleteTermino(item.Id)"><i
+                                class="bi bi-arrow-right"></i>
+                            borrar</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+}
+
+<ng-template #templatetutin>
+    <div class="modal-header">
+        <h1 class="modal-title fs-5">Agrega o edita un termino</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="dismiss" aria-label="Close" (click)="modal.dismiss()">
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <app-addterminos [termino]="this.terminocomopropiedaddelcomponente"></app-addterminos>
+        </div>
+    </div>
+</ng-template>

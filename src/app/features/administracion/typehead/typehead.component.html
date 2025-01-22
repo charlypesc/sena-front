@@ -5,7 +5,7 @@
 
 <input id="typeahead" type="text" class="form-control" [ngbTypeahead]="search" [resultTemplate]="rt" [(ngModel)]="model"
     [inputFormatter]="formatter" [resultFormatter]="formatter" (selectItem)="onSelect($event.item)"
-    placeholder="Search for a framework" />
+    placeholder="Indica un termino para la busqueda" />
 
 <ng-template #rt let-r="result">
     <span>{{ r.termino }}</span>

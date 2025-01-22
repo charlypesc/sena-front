@@ -50,7 +50,8 @@
     </div>
     <div class="modal-body">
         <div class="container-fluid">
-            <app-addterminos [termino]="this.terminocomopropiedaddelcomponente"></app-addterminos>
+            <app-addterminos [termino]="this.terminocomopropiedaddelcomponente"
+                (onTerminoSaved)="onModalDismissed()"></app-addterminos>
         </div>
     </div>
 </ng-template>

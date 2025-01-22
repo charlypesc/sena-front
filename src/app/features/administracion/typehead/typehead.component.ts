@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   NgbTypeahead,
@@ -32,6 +32,8 @@ import { Appservice } from '../../../core/services/appservice.service';
 })
 export class TypeheadComponent {
   @Input('nameLabel') public nameLabel: string = 'Termino';
+  @Output('paraElComponentePadre')
+  public paraElComponentePadre: EventEmitter<any> = new EventEmitter<any>();
   termino$ = this.appService.getDataAction<Itermino>('/Api/Terminos');
   constructor(private appService: Appservice) {}
   model: string = '';
@@ -60,6 +62,7 @@ export class TypeheadComponent {
                   )
                   .map((item: Itermino) => ({
                     id: item['Id'],
+                    descripcion: item['Descripcion'],
                     fechaCreacion: item['FechaCreacion'],
                     fechaModificacion: item['FechaModificacion'],
                     imagenUrl: item['ImagenUrl'],
@@ -73,6 +76,7 @@ export class TypeheadComponent {
     );
 
   onSelect(event: NgbTypeaheadSelectItemEvent) {
-    console.log(event);
+    // console.log('estamo en el comp hijo pasandole al com padre', event);
+    this.paraElComponentePadre.emit(event);
   }
 }

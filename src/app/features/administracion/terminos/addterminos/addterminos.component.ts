@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Appservice } from '../../../../core/services/appservice.service';
 import { Itermino } from '../../../../core/models/termino.model';
@@ -13,6 +13,7 @@ import { Itermino } from '../../../../core/models/termino.model';
 })
 export class AddterminosComponent implements OnInit {
   @Input('termino') public termino!: Itermino | null;
+  @Output('onTerminoSaved') onTerminoSaved = new EventEmitter<string>();
   public terminosForm = this.fb.group({
     Id: [0],
     Termino: [''],
@@ -41,13 +42,13 @@ export class AddterminosComponent implements OnInit {
       this.appservice
         .UpdateControl(this.termino?.Id, terminoObject, '/api/terminos')
         .subscribe((data) => {
-          //update tabla
+          this.onTerminoSaved.emit(data);
         });
     } else {
       this.appservice
         .NewControl(this.terminosForm.value, '/api/terminos')
         .subscribe((data) => {
-          console.log(data);
+          this.onTerminoSaved.emit(data);
         });
     }
   }

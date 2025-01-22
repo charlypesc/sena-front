@@ -1,1 +1,14 @@
-<p>search works!</p>
+<div>
+    <app-typehead (paraElComponentePadre)="meLlegaInfodelComponenteHijo($event)"></app-typehead>
+    <!-- voy a estar atento a la propiedad de itermino con el nombre que corresponda 
+ si la propiedad itermino no esta vacia voy a pintar el termino en el html. -->
+    @if(newTermino) {
+    <!-- {{newTermino | json}} -->
+    <div class="mt-4">
+        <h4>{{newTermino.Termino}}</h4>
+        <p>{{newTermino.Descripcion}}</p>
+        <!-- <p>{{newTermino.Link}}</p> -->
+        <app-iframe-tutorial [url]="newTermino.Link"></app-iframe-tutorial>
+    </div>
+    }
+</div>

@@ -18,12 +18,7 @@ import { TypeheadComponent } from '../typehead/typehead.component';
 @Component({
   selector: 'app-terminos',
   standalone: true,
-  imports: [
-    CommonModule,
-    AddterminosComponent,
-    DataTablesModule,
-    TypeheadComponent,
-  ],
+  imports: [CommonModule, AddterminosComponent, DataTablesModule],
   templateUrl: './terminos.component.html',
   styleUrl: './terminos.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -65,5 +60,9 @@ export class TerminosComponent implements OnInit {
 
   getTerminos() {
     this.termino$ = this.appService.getDataAction<Itermino>('/Api/Terminos');
+  }
+  onModalDismissed() {
+    this.getTerminos();
+    this.modal.dismiss();
   }
 }

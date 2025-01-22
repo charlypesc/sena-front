@@ -1,9 +1,9 @@
-@if(termino$ | async; as termino){
 <div class="row">
     <div class="col-12">
         <button class="btn btn-outline-success ml-auto" (click)="edit(templatetutin, null)">Agregar</button>
     </div>
 </div>
+@if(termino$ | async; as termino){
 <div class="container">
     <div class="row mt-3">
         <table datatable [dtOptions]="dtOptions" class="table light table-bordered">
